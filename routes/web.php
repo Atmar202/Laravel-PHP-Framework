@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ˇ
+// Route::resource('/todos', 'App\Http\Controllers\TodoController');
 
 Route::get('/todos', 'App\Http\Controllers\TodoController@index')->name('todo.index');
 Route::get('/todos/create', 'App\Http\Controllers\TodoController@create');
