@@ -16,7 +16,7 @@
             @if($todo->completed)
                 <p class="line-through">{{$todo->title }}</p>
                 @else
-                <p>{{$todo->title }}</p>
+                <p class="cursor-pointer" href="{{'todo.show', $todo->id}}">{{$todo->title }}</p>
                 @endif
 
                 <div>
