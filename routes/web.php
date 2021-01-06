@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/todos', 'App\Http\Controllers\TodoController@index');
 Route::get('/todos/create', 'App\Http\Controllers\TodoController@create');
-Route::get('/todos/{id}/edit', 'App\Http\Controllers\TodoController@edit');
+Route::get('/todos/{todo}/edit', 'App\Http\Controllers\TodoController@edit');
 Route::post('/todos/create', 'App\Http\Controllers\TodoController@store');
 
 Route::get('/', function () {
