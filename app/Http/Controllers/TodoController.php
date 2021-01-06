@@ -40,7 +40,9 @@ class TodoController extends Controller
         //if(!$request->title){
         //    return redirect()->back()->with('error', 'Please give title');
         //}
-        Todo::create($request->all());
+        
+        //Todo::create($request->all());
+        auth()->user()->todos()->create($request->all());
         return redirect()->back()->with('message','Todo Created Successfully');
     }
 
