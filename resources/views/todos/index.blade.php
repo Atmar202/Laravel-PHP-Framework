@@ -9,8 +9,20 @@
         <x alert />
             @foreach($todos as $todo)
             <li class="flex justify-center py-2">
+            @if($todo->completed)
+                <p class="line-through">{{$todo->title }}</p>
+                @else
                 <p>{{$todo->title }}</p>
-                <a href="{{'/todos/'.$todo->id.'/edit'}}" class="m-5 py-1 px-1 bg-orange-400 border cursor-pointer rounded text-white">Edit</a>
+                @endif
+                <div>
+                <a href="{{'/todos/'.$todo->id.'/edit'}}" class="text-orange-400 border cursor-pointer text-white">Edit
+                <span class="fas fa-edit px-2"></span></a>
+                @if($todo->completed)
+                <span class="fas fa-check text-green-400 px-4"></span>
+                @else
+                <span class="fas fa-check text-gray-300 cursor-pointer px-4"></span>
+                @endif
+                </div>
             </li>
             @endforeach
             <ul>
