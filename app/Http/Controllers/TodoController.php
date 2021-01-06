@@ -41,8 +41,10 @@ class TodoController extends Controller
         //    return redirect()->back()->with('error', 'Please give title');
         //}
         
-        //Todo::create($request->all());
-        auth()->user()->todos()->create($request->all());
+        $userId = auth()->id();
+        $request['user_id'] = $userId;
+        Todo::create($request->all());
+        //auth()->user()->todos()->create($request->all());
         return redirect()->back()->with('message','Todo Created Successfully');
     }
 
