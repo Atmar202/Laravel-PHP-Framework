@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/todos', 'App\Http\Controllers\TodoController@index');
+Route::get('/todos', 'App\Http\Controllers\TodoController@index')->name('todo.index');
 Route::get('/todos/create', 'App\Http\Controllers\TodoController@create');
 Route::get('/todos/{todo}/edit', 'App\Http\Controllers\TodoController@edit');
 Route::post('/todos/create', 'App\Http\Controllers\TodoController@store');
+Route::patch('/todos/{todo}/update', 'App\Http\Controllers\TodoController@update')->name('todo.update');
 
 Route::get('/', function () {
     return view('welcome');

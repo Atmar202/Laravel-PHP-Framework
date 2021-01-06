@@ -6,6 +6,7 @@
 <a href="/todos/create" class="mx-5 py-1 px-1 bg-blue-400 cursor-pointer rounded text white">Create New</a>
 </div>
         <ul>
+        <x alert />
             @foreach($todos as $todo)
             <li class="flex justify-center py-2">
                 <p>{{$todo->title }}</p>
