@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
-use App\Step;
+use App\Models\Step;
+use App\Http\Requests\TodoCreateRequest;
 
 class TodoController extends Controller
 {
     public function ___construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        $todos = auth()->user()->todos()->sortBy('completed');
+        $todos = auth()->user()->todos->sortBy('completed');
         return view('todos.index', compact('todos'));
     }
 
@@ -51,7 +52,7 @@ class TodoController extends Controller
                 $todo->steps()->create(['name' => $step]);
             }
         }
-        return redirect('todo.index')->back()->with('message','Todo Created Successfully');
+        return redirect(route('todo.index'))->with('message','Todo Created Successfully');
     }
 
     public function edit(Todo $todo)
@@ -69,7 +70,7 @@ class TodoController extends Controller
     {
         $todo->update(['title' => $request->title]);
         if($request->stepName){
-            foreach($request->stepName as $step){
+            foreach($request->stepName as $key => $value){
                 $id = $request->stepId[$key];
                 if(!$id){
                     $todo->steps()->create(['name' => $value]);
@@ -94,7 +95,7 @@ class TodoController extends Controller
         return redirect()->back()->with('message', 'Task Marked as incompleted!');
     }
 
-    public function delete(Todo $todo)
+    public function destroy(Todo $todo)
     {
         $todo->steps->each->delete();
         $todo->delete();

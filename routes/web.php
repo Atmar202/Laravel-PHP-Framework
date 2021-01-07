@@ -12,16 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::resource('/todos', 'App\Http\Controllers\TodoController');
-
+Route::resource('/todo', 'TodoController');
+/*
 Route::get('/todos', 'App\Http\Controllers\TodoController@index')->name('todo.index');
 Route::get('/todos/create', 'App\Http\Controllers\TodoController@create');
 Route::get('/todos/{todo}/edit', 'App\Http\Controllers\TodoController@edit');
-Route::post('/todos/create', 'App\Http\Controllers\TodoController@store');
+Route::post('/todos/create', 'App\Http\Controllers\TodoController@store')->name('todo.store');
 Route::patch('/todos/{todo}/update', 'App\Http\Controllers\TodoController@update')->name('todo.update');
-Route::put('/todos/{todo}/complete', 'App\Http\Controllers\TodoController@complete')->name('todo.complete');
-Route::delete('/todos/{todo}/incomplete', 'App\Http\Controllers\TodoController@incomplete')->name('todo.incomplete');
 Route::delete('/todos/{todo}/delete', 'App\Http\Controllers\TodoController@delete')->name('todo.delete');
+*/
+
+Route::put('/todos/{todo}/complete', 'TodoController@complete')->name('todo.complete');
+Route::delete('/todos/{todo}/incomplete', 'TodoController@incomplete')->name('todo.incomplete');
+
 
 Route::get('/', function () {
     return view('welcome');
