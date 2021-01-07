@@ -17,8 +17,7 @@
         </div>
 
         <div class="py-2">
-
-        @livewire('step')
+            @livewire('step')
         </div>
         <div class="py-1">
             <input type="submit" value="Create" class="p-2 border rounded" />
