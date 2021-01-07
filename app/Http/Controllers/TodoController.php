@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Step;
 
 class TodoController extends Controller
 {
@@ -67,6 +68,17 @@ class TodoController extends Controller
     public function update(TodoCreateRequest $request, Todo $todo)
     {
         $todo->update(['title' => $request->title]);
+        if($request->stepName){
+            foreach($request->stepName as $step){
+                $id = $request->stepId[$key];
+                if(!$id){
+                    $todo->steps()->create(['name' => $value]);
+                } else{
+                $step = Step::find($id);
+                $step->update(['name' => $value]);
+                }
+            }
+        }
         return redirect(route('todo.index'))->with('message', 'Updated!');
     }
 
