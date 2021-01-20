@@ -69,9 +69,10 @@ class TodoController extends Controller
     public function update(TodoCreateRequest $request, Todo $todo)
     {
         $todo->update(['title' => $request->title]);
-        if($request->stepName){
-            foreach($request->stepName as $key => $value){
-                $id = $request->stepId[$key];
+        $todo->update(['description' => $request->description]);
+        if($request->stepNames){
+            foreach($request->stepNames as $key => $value){
+                $id = $request->stepIds[$key];
                 if(!$id){
                     $todo->steps()->create(['name' => $value]);
                 } else{

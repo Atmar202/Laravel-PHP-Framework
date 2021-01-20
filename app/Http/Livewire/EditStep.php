@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Step;
+use App\Models\Step;
 
 class EditStep extends Component
 {
@@ -16,7 +16,7 @@ class EditStep extends Component
 
     public function increment()
     {
-        $this->steps[] = count($this->steps);
+        $this->steps[] = ["wireId"=>abs(crc32(uniqid())), "name"=>""];
     }
 
     public function remove($index)

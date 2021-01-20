@@ -13,7 +13,7 @@
             <input type="text" name="title" class="py-2 px-2 border rounded" placeholder="title" />
         </div>
         <div class="py-1">
-            <textarea name="description" name="description" class="py-2 px-2 border rounded" placeholder="description"></textarea>
+            <textarea name="description" class="py-2 px-2 border rounded" placeholder="description"></textarea>
         </div>
 
         <div class="py-2">
